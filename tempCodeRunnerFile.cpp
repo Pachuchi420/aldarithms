@@ -1,3 +1,0 @@
-bool checkDAG(directedGraph& graph){ 
-
-// }
