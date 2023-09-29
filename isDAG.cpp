@@ -65,9 +65,9 @@ class directedGraph{
         }
 
 
-    bool empty(){
-        return adjList.size() == 0;
-    }
+        bool empty(){
+            return adjList.size() == 0;
+        }
 };
 
 int getNullOutdegreeNode(directedGraph& graph){
