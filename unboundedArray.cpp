@@ -53,8 +53,19 @@ class unboundedArray{
             }
         }
 
-    ~unboundedArray(){ 
-        delete[] currentArray;
+        ~unboundedArray(){ 
+            delete[] currentArray;
+        }
+
+        void print(){
+        std::cout << '[';
+        for(int i = 0; i <= currentSize -1; i++) {
+            std::cout << currentArray[i];
+            if(i < currentSize - 1) {
+                std::cout << ' ';
+            }
+        }
+        std::cout << ']' << std::endl;
     }
 
 }; 
@@ -63,7 +74,12 @@ class unboundedArray{
 
 int main(){ 
     unboundedArray<int> myarray(3);
+    myarray.pushback(1);
+    myarray.pushback(2);
     myarray.pushback(3);
-    std::cout << myarray[0] << std::endl;
+    myarray.print();
+    myarray.pushback(5);
+    myarray.print();
+
 
 }

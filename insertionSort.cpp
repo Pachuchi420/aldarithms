@@ -1,56 +1,52 @@
-#include <iostream>
+#include <iostream> 
 #include <vector> 
 #include <random>
 
 
-template<typename T>
-std::vector<T> createVector(int size){
-    std::vector<T> vec;
+std::vector<int> createVector(int size){ 
+    std::vector<int> vec;
     std::random_device rd;  
     std::mt19937 gen(rd()); 
-    std::uniform_int_distribution<T> distrib(1, 9);  
+    std::uniform_int_distribution<int> distrib(1, 9); 
 
-    for(int i = 0; i < size; ++i) {
-        vec.push_back(distrib(gen));  
+    for(int i = 0 ; i < size ; i++){ 
+        vec.push_back(distrib(gen));
     }
 
-    return vec; 
+    return vec;
 }
 
 
-template<typename T>
-void print(std::vector<T> givenVec){
-    std::cout << "[";
-    for (int i = 0 ; i <= givenVec.size() - 1 ; i++){ 
-        std::cout << givenVec[i]; 
-        if (i < givenVec.size() - 1){ 
-            std::cout << ", ";
+void print(const std::vector<int>& givenVector){ 
+    std::cout << "["; 
+    for(int i = 0 ; i <= givenVector.size()-1 ; i++){ 
+        std::cout << givenVector[i];
+        if (i < givenVector.size() - 1){ 
+            std::cout << ", "; 
         }
-    } 
-    std::cout << "]" << std::endl; 
+    }
+    std::cout << "]" << std::endl;
 }
 
 
-void insertionSort(std::vector<int> givenVec){ 
-    for(int i = 1; i < givenVec.size() - 1 ; i++){ 
-        int temp = givenVec[i];
-        int left = i - 1; 
-        
-        if(left >= 0 && givenVec[left] > temp){
-            givenVec[left + 1] = givenVec[left]; 
+// This is O(n^2) worst and average time, but O(n) in best case
+void insertionSort (std::vector<int>& givenVector){ 
+    for(int i = 1 ; i < givenVector.size() - 1 ; i++){
+        int temp = givenVector[i]; 
+        int left = i - 1;
+
+        while(left >= 0 && givenVector[left] > temp){ 
+            givenVector[left + 1] = givenVector[left]; 
             left--;
         }
-        givenVec[left + 1] = temp;
+        givenVector[left + 1] = temp;
     }
-
-    print(givenVec);
 }
 
 
-
-int main(){ 
-    std::vector<int> myVector = createVector<int>(10); 
-    print(myVector);
-    insertionSort(myVector);
-
+int main(){
+    std::vector<int> myVec = createVector(10);
+    print(myVec);
+    insertionSort(myVec);
+    print(myVec);
 }
