@@ -1,0 +1,21 @@
+
+
+function DFS(givenGraph, startNode){
+    stack = {empty vector}
+    visited = {empty vector}
+
+    stack.push(startNode)
+
+    while stack is not empty: 
+        currentNode = stack.pop()
+
+        if currentNode is not in visited:
+            visited.push(currentNode)
+            print currentNode
+
+            for each neighbor of currentNode: 
+                if neighbor not in visited: 
+                    stack.push(neighbor)
+}
+
+

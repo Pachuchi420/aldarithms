@@ -1,0 +1,34 @@
+function isBipartite(graph givenGraph){
+    for node in givenGraph{ 
+        node.color = NONE
+    }
+
+
+    queue = [empty vector]
+    startingNode = givenGraph.root
+    startingNode.color = RED
+    queue.push_back(startingNode)
+
+    while(!queue.empty()){
+        current = queue.popFront()
+
+        for each neighbor in current.neighbors{ 
+            if neighbor.color == NONE{
+                if current.color == RED{
+                    neighbor.color = BLUE
+                } else if current.color == BLUE{
+                    neighbor.color = RED
+                }
+                queue.push_back(neighbor)
+            } else if (current.color == RED and neighbor.color == RED) or (current.color == BLUE and neighbor.color == BLUE){
+                return false
+        }
+
+    }
+    return true
+    }
+}
+
+
+
+
